@@ -7,7 +7,7 @@
 #include "TTree.h"
 #include "TFile.h"
 
-#include "../HKGFileWriterBase/HKGFileWriterBase.h"
+#include "HKGFileWriterBase.h"
 
 #include <DataModel.h>
 #include "Tool.h"

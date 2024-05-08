@@ -1,6 +1,6 @@
 #include "HKG4PhysicsList.h"
 
-#include "../src/Utilities.h"
+#include "Utilities.h"
 
 #include "WCSimRunAction.hh"
 

@@ -14,7 +14,13 @@ include(HKPackageBuilder)
 hkbuilder_prepare_project()
 hk_check_dependencies()
 
+#add common functions directory
+include_directories(src BEFORE)
 add_subdirectory(src)
+
+#add ABC tools
+# This should really be improved to only be included for the inheriting tools, rather than all tools
+include_directories(HKGFileWriterBase BEFORE)
 
 # Add your tools here
 hk_add_tool(WCSim_exe)
