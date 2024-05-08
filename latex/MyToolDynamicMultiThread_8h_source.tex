@@ -1,0 +1,49 @@
+\doxysection{My\+Tool\+Dynamic\+Multi\+Thread.\+h}
+\hypertarget{MyToolDynamicMultiThread_8h_source}{}\label{MyToolDynamicMultiThread_8h_source}\index{template/MyToolDynamicMultiThread.h@{template/MyToolDynamicMultiThread.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MYTOOLDynamicMultiThread\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MYTOOLDynamicMultiThread\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Tool.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMyToolDynamicMultiThread__args}{MyToolDynamicMultiThread\_args}}\ :\ Thread\_args\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structMyToolDynamicMultiThread__args}{MyToolDynamicMultiThread\_args}}();}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structMyToolDynamicMultiThread__args}{\string~MyToolDynamicMultiThread\_args}}();}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ busy;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ std::string\ message;}
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMyToolDynamicMultiThread}{MyToolDynamicMultiThread}}\ :\ \textcolor{keyword}{public}\ Tool\ \{}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMyToolDynamicMultiThread_a5eec7239400c507754ba6218b3eb8d4a}{MyToolDynamicMultiThread}}();\ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMyToolDynamicMultiThread_ac082408d85bc3e76214e55d4f62de0da}{Initialise}}(std::string\ configfile,}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DataModel\&\ data);\ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMyToolDynamicMultiThread_aec2f9af9495520d74bb154d626a94a63}{Execute}}();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMyToolDynamicMultiThread_ab70e77b0fd90e50c5103ccfa0bfd6485}{Finalise}}();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ CreateThread();\ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DeleteThread(}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pos);\ \ }
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Thread(}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ Thread\_args*\ arg);\ \ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ Utilities*\ m\_util;\ \ \ \ \ \ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ std::vector<MyToolDynamicMultiThread\_args*>}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ args;\ \ }
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ m\_freethreads;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ m\_threadnum;\ \ }
+\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
