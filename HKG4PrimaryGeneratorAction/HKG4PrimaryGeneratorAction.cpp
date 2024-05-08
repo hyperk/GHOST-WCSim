@@ -2,7 +2,7 @@
 
 #include "WCSimPrimaryGeneratorAction.hh"
 
-using namespace	HK::Ghost::G4;
+using namespace HK::Ghost::G4;
 
 HKG4PrimaryGeneratorAction::HKG4PrimaryGeneratorAction() : Tool() {}
 
@@ -18,7 +18,9 @@ bool HKG4PrimaryGeneratorAction::Initialise(std::string configfile, DataModel& d
 	if(!m_variables.Get("verbose", m_verbose))
 		m_verbose = 1;
 
-	m_data->m_p_run_manager->SetUserAction(new WCSimPrimaryGeneratorAction(static_cast<const WCSimDetectorConstruction*>(m_data->m_p_run_manager->GetUserDetectorConstruction())));
+	m_data->m_p_run_manager->SetUserAction(
+	    new WCSimPrimaryGeneratorAction(static_cast<const WCSimDetectorConstruction*>(
+	        m_data->m_p_run_manager->GetUserDetectorConstruction())));
 
 	return true;
 }

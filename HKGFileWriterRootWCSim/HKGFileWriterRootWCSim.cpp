@@ -1,27 +1,25 @@
 #include "HKGFileWriterRootWCSim.h"
 
-using namespace	HK::Ghost::IO;
+using namespace HK::Ghost::IO;
 
 HKGFileWriterRootWCSim::HKGFileWriterRootWCSim() : HKGFileWriterBase() {
-	m_p_file = nullptr;
+	m_p_file       = nullptr;
 	m_p_tree_event = nullptr;
-	m_p_tree_geom = nullptr;
+	m_p_tree_geom  = nullptr;
 }
 
 bool HKGFileWriterRootWCSim::SetupFile() {
-	//Create the file
+	// Create the file
 	m_p_file = new TFile(m_filename.c_str(), "RECREATE");
 	if(m_p_file == nullptr)
 		return false;
 
-	//Create & setup the event tree
+	// Create & setup the event tree
 	m_p_tree_event = new TTree("wcsimT", "WCSim Event tree");
 
-
-	//Create & setup the geometry tree
+	// Create & setup the geometry tree
 	m_p_tree_geom = new TTree("wcsimGeoT", "WCSim geometry tree");
 
-	
 	return true;
 }
 

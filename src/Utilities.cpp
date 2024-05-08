@@ -1,7 +1,7 @@
 #include "Utilities.h"
 
-#include <iostream>
 #include <unistd.h>
+#include <iostream>
 
 bool HK::Ghost::utils::FileExists(const char* filename) {
 	bool exists = access(filename, F_OK) != -1;
@@ -27,9 +27,9 @@ std::string HK::Ghost::utils::GetEnvironmentVariableWithDefault(const char* vari
 	return env;
 }
 
-std::string HK::Ghost::utils::GetConfigFilename(Store & variables,
-																								const char* config_param,
-																								const char* default_filename) {
+std::string HK::Ghost::utils::GetConfigFilename(Store& variables,
+                                                const char* config_param,
+                                                const char* default_filename) {
 
 	std::string filename;
 	if(!variables.Get(config_param, filename))

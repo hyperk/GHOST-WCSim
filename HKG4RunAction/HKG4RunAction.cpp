@@ -3,7 +3,7 @@
 #include "WCSimRandomParameters.hh"
 #include "WCSimRunAction.hh"
 
-using namespace	HK::Ghost::G4;
+using namespace HK::Ghost::G4;
 
 HKG4RunAction::HKG4RunAction() : Tool() {}
 
@@ -22,8 +22,9 @@ bool HKG4RunAction::Initialise(std::string configfile, DataModel& data) {
 	// define random number generator parameters
 	WCSimRandomParameters* randomparameters = new WCSimRandomParameters();
 
-	WCSimRunAction* myRunAction = new WCSimRunAction(static_cast<const WCSimDetectorConstruction *>(m_data->m_p_run_manager->GetUserDetectorConstruction()),
-																									 randomparameters);
+	WCSimRunAction* myRunAction = new WCSimRunAction(
+	    static_cast<const WCSimDetectorConstruction*>(m_data->m_p_run_manager->GetUserDetectorConstruction()),
+	    randomparameters);
 	m_data->m_p_run_manager->SetUserAction(myRunAction);
 
 	return true;

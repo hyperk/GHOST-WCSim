@@ -17,7 +17,9 @@ bool HKG4StackingAction::Initialise(std::string configfile, DataModel& data) {
 		m_verbose = 1;
 
 	m_p_UI = G4UImanager::GetUIpointer();
-	m_data->m_p_run_manager->SetUserAction(new WCSimStackingAction(static_cast<const WCSimDetectorConstruction*>(m_data->m_p_run_manager->GetUserDetectorConstruction())));
+	m_data->m_p_run_manager->SetUserAction(
+	    new WCSimStackingAction(static_cast<const WCSimDetectorConstruction*>(
+	        m_data->m_p_run_manager->GetUserDetectorConstruction())));
 
 	return true;
 }

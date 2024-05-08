@@ -18,7 +18,10 @@ bool HKG4SteppingAction::Initialise(std::string configfile, DataModel& data) {
 	if(!m_variables.Get("verbose", m_verbose))
 		m_verbose = 1;
 
-	m_data->m_p_run_manager->SetUserAction(new WCSimSteppingAction(static_cast<const WCSimRunAction*>(m_data->m_p_run_manager->GetUserRunAction()), static_cast<const WCSimDetectorConstruction*>(m_data->m_p_run_manager->GetUserDetectorConstruction())));
+	m_data->m_p_run_manager->SetUserAction(new WCSimSteppingAction(
+	    static_cast<const WCSimRunAction*>(m_data->m_p_run_manager->GetUserRunAction()),
+	    static_cast<const WCSimDetectorConstruction*>(
+	        m_data->m_p_run_manager->GetUserDetectorConstruction())));
 
 	return true;
 }

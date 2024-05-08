@@ -22,21 +22,23 @@ namespace HK {
 		namespace G4 {
 			class HKG4TrackingAction : public Tool {
 
-			public:
+				public:
 
-				HKG4TrackingAction();  ///< Simple constructor
-				bool Initialise(std::string configfile,
-												DataModel& data) override;  ///< Initialise Function for setting up Tool resources. @param
-				///< configfile The path and name of the dynamic configuration file
-				///< to read in. @param data A reference to the transient data
-				///< class used to pass information between Tools.
-				bool Execute() override;                    ///< Execute function used to perform Tool purpose.
-				bool Finalise() override;                   ///< Finalise funciton used to clean up resources.
+					HKG4TrackingAction();  ///< Simple constructor
+					bool Initialise(std::string configfile,
+					                DataModel& data)
+					    override;  ///< Initialise Function for setting up Tool resources. @param
+					///< configfile The path and name of the dynamic configuration file
+					///< to read in. @param data A reference to the transient data
+					///< class used to pass information between Tools.
+					bool Execute() override;   ///< Execute function used to perform Tool purpose.
+					bool Finalise() override;  ///< Finalise funciton used to clean up resources.
 
-			private:
-				G4UImanager* m_p_UI;				
+				private:
+
+					G4UImanager* m_p_UI;
 			};
-		} // namespace G4
-	} // namespace Ghost
-} // namespace HK
+		}  // namespace G4
+	}      // namespace Ghost
+}  // namespace HK
 #endif

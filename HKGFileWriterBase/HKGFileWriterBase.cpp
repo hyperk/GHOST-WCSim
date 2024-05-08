@@ -2,7 +2,7 @@
 
 #include <sstream>
 
-using namespace	HK::Ghost::IO;
+using namespace HK::Ghost::IO;
 
 HKGFileWriterBase::HKGFileWriterBase() : Tool() {}
 
@@ -30,7 +30,7 @@ bool HKGFileWriterBase::Initialise(std::string configfile, DataModel& data) {
 		*m_log << ML(0) << "FillEventIndependent() did not succeed. Stopping toolchain" << std::endl;
 		return false;
 	}
-	
+
 	return true;
 }
 
@@ -38,13 +38,15 @@ bool HKGFileWriterBase::GetOutputFilename() {
 	// Override the automatic filename construction
 	if(!m_variables.Get("override_filename", m_filename)) {
 
-		//Setup the filename automatically
+		// Setup the filename automatically
 		std::stringstream ss;
 		ss << "ghost_"
-			 << "RUN" << "_"
-			 << "SUBRUN" << "_"
-			 << "PHYSICS"
-			 << ".root";
+		   << "RUN"
+		   << "_"
+		   << "SUBRUN"
+		   << "_"
+		   << "PHYSICS"
+		   << ".root";
 		m_filename = ss.str();
 
 		*m_log << ML(1) << "TODO build auto filename from things stored in the DataModel" << std::endl;

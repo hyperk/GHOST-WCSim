@@ -23,13 +23,15 @@ namespace HK {
 
 			//! Get a filename from the config file
 			/*!
-				Also checks that the file exists. There is a hard exit if not
-				\param variables The Store containing your Tools' config file options
-				\param config_param The name of the config file variable
-				\param default_filename A fallback
-				\return The filename
+			    Also checks that the file exists. There is a hard exit if not
+			    \param variables The Store containing your Tools' config file options
+			    \param config_param The name of the config file variable
+			    \param default_filename A fallback
+			    \return The filename
 			*/
-			std::string GetConfigFilename(Store & variables, const char* config_param, const char* default_filename);
-		} // namespace utils
-	} // namespace Ghost
-} // namespace HK
+			std::string GetConfigFilename(Store& variables,
+			                              const char* config_param,
+			                              const char* default_filename);
+		}  // namespace utils
+	}      // namespace Ghost
+}  // namespace HK
