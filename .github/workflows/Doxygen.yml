@@ -22,15 +22,16 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Make docs folder
         run: mkdir docs-output
       
       # Runs a single command using the runners shell
       - name: Doxygen Action
-        uses: mattnotmitt/doxygen-action@1.9.1
-    
+        uses: mattnotmitt/doxygen-action@1.9
+        with:
+          enable-latex: false
   
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
