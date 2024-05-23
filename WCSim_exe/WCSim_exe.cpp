@@ -1,23 +1,12 @@
 #include "WCSim_exe.h"
 
 #include "WCSimDetectorConstruction.hh"
-#include "WCSimEventAction.hh"
-#include "WCSimPhysicsListFactory.hh"
-#include "WCSimPrimaryGeneratorAction.hh"
-#include "WCSimRandomParameters.hh"
-#include "WCSimRunAction.hh"
-#include "WCSimStackingAction.hh"
-#include "WCSimSteppingAction.hh"
-// #include "WCSimTrackingAction.hh"
-#include "WCSimTuningParameters.hh"
 
-#include "../src/Utilities.h"
+#include "Utilities.h"
 
-using namespace HK::Ghost::G4;
+Ghost::G4::WCSim_exe::WCSim_exe() : Tool() {}
 
-WCSim_exe::WCSim_exe() : Tool() {}
-
-bool WCSim_exe::Initialise(std::string configfile, DataModel& data) {
+bool Ghost::G4::WCSim_exe::Initialise(std::string configfile, DataModel& data) {
 
 	if(configfile != "")
 		m_variables.Initialise(configfile);
@@ -33,16 +22,12 @@ bool WCSim_exe::Initialise(std::string configfile, DataModel& data) {
 		m_verbose = 1;
 
 	// get all the mac files
-	std::string wcsim_dir = HK::Ghost::utils::GetEnvironmentVariableWithDefault("WCSIM_BUILD_DIR", "./");
-	/*std::string wcsim_mac_job_opt_filename =
-	    HK::Ghost::utils::GetConfigFilename(m_variables, "wcsim_mac_job_opt_filename", (wcsim_dir +
-	   "/macros/jobOptions.mac").c_str());
-	*/
+	std::string wcsim_dir = Ghost::Utils::GetEnvironmentVariableWithDefault("WCSIM_BUILD_DIR", "./");
 	std::string wcsim_mac_tuning_filename =
-	    HK::Ghost::utils::GetConfigFilename(m_variables,
+	    Ghost::Utils::GetConfigFilename(m_variables,
 	                                        "wcsim_mac_tuning_filename",
 	                                        (wcsim_dir + "/macros/tuning_parameters.mac").c_str());
-	m_wcsim_mac_filename = HK::Ghost::utils::GetConfigFilename(m_variables,
+	m_wcsim_mac_filename = Ghost::Utils::GetConfigFilename(m_variables,
 	                                                           "wcsim_mac_filename",
 	                                                           (wcsim_dir + "/WCSim.mac").c_str());
 
@@ -82,34 +67,18 @@ bool WCSim_exe::Initialise(std::string configfile, DataModel& data) {
 
 	m_data->m_p_run_manager->SetUserInitialization(WCSimdetector);
 
-	*m_log << ML(0) << "TODO: Add tuningpars->SaveOptionsToOutput(myRunAction->GetRootOptions());" << endl;
+	*m_log << ML(0) << "TODO: Add tuningpars->SaveOptionsToOutput(myRunAction->GetRootOptions());" << std::endl;
 
-	// Set user action classes
-	// WCSimPrimaryGeneratorAction* myGeneratorAction = new WCSimPrimaryGeneratorAction(WCSimdetector);
-	// m_data->m_p_run_manager->SetUserAction(myGeneratorAction);
-
-	// WCSimRunAction* myRunAction = new WCSimRunAction(WCSimdetector, randomparameters);
-
-	// save all the options from WCSimTuningParameters & WCSimPhysicsListFactory
-	//(set in tuning_parameters.mac & jobOptions*.mac)
-	// tuningpars->SaveOptionsToOutput(myRunAction->GetRootOptions());
-	// physFactory->SaveOptionsToOutput(myRunAction->GetRootOptions());
-
-	// m_data->m_p_run_manager->SetUserAction(myRunAction);
-
-	// m_data->m_p_run_manager->SetUserAction(new WCSimEventAction(myRunAction, WCSimdetector,
-	// myGeneratorAction)); m_data->m_p_run_manager->SetUserAction(new WCSimTrackingAction);
-
-	// m_data->m_p_run_manager->SetUserAction(new WCSimStackingAction(WCSimdetector));
-
-	// m_data->m_p_run_manager->SetUserAction(new WCSimSteppingAction(myRunAction, WCSimdetector));
+	// save all the options from WCSimTuningParameters
+	//(set in tuning_parameters.mac)
+	//tuningpars->SaveOptionsToOutput(myRunAction->GetRootOptions());
 
 	m_initialised = false;
 
 	return true;
 }
 
-bool WCSim_exe::Execute() {
+bool Ghost::G4::WCSim_exe::Execute() {
 
 	if(!m_initialised) {
 		// Initialize G4 kernel
@@ -118,6 +87,11 @@ bool WCSim_exe::Execute() {
 		m_p_UI->ApplyCommand("/control/execute " + m_wcsim_mac_filename);
 
 		m_initialised = true;
+
+		*m_log << ML(1) << std::endl << std::endl
+					 << "******************************" << std::endl
+					 << "Have initalised the Geant run manager" << std::endl
+					 << "******************************" << std::endl << std::endl;
 	}
 
 	if(m_current_event < m_number_of_events) {
@@ -125,11 +99,12 @@ bool WCSim_exe::Execute() {
 	}
 	m_current_event++;
 	if(m_current_event >= m_number_of_events)
+		*m_log << ML(1) << "Finished reading events. Stopping loop" << std::endl;
 		m_data->vars.Set("StopLoop", 1);
 	return true;
 }
 
-bool WCSim_exe::Finalise() {
+bool Ghost::G4::WCSim_exe::Finalise() {
 	delete m_data->m_p_run_manager;
 
 	return true;

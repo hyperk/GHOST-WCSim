@@ -1,8 +1,8 @@
 #include "MyTool.h"
 
-MyTool::MyTool() : Tool() {}
+GhostNAMESPACE::MyTool::MyTool() : Tool() {}
 
-bool MyTool::Initialise(std::string configfile, DataModel& data) {
+bool GhostNAMESPACE::MyTool::Initialise(std::string configfile, DataModel& data) {
 
 	if(configfile != "")
 		m_variables.Initialise(configfile);
@@ -17,12 +17,12 @@ bool MyTool::Initialise(std::string configfile, DataModel& data) {
 	return true;
 }
 
-bool MyTool::Execute() {
+bool GhostNAMESPACE::MyTool::Execute() {
 
 	return true;
 }
 
-bool MyTool::Finalise() {
+bool GhostNAMESPACE::MyTool::Finalise() {
 
 	return true;
 }
