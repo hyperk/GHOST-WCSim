@@ -20,8 +20,8 @@ bool Ghost::G4::HKG4PhysicsList::Initialise(std::string configfile, DataModel& d
 	std::string wcsim_dir = Ghost::Utils::GetEnvironmentVariableWithDefault("WCSIM_BUILD_DIR", "./");
 	std::string wcsim_mac_job_opt_filename =
 	    Ghost::Utils::GetConfigFilename(m_variables,
-	                                        "wcsim_mac_job_opt_filename",
-	                                        (wcsim_dir + "/macros/jobOptions.mac").c_str());
+	                                    "wcsim_mac_job_opt_filename",
+	                                    (wcsim_dir + "/macros/jobOptions.mac").c_str());
 
 	// Set up the messenger hooks here, initialize the actual list after loading jobOptions.mac
 	WCSimPhysicsListFactory* m_p_phys_factory = new WCSimPhysicsListFactory();

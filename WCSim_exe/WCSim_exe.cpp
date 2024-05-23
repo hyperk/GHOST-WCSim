@@ -25,11 +25,11 @@ bool Ghost::G4::WCSim_exe::Initialise(std::string configfile, DataModel& data) {
 	std::string wcsim_dir = Ghost::Utils::GetEnvironmentVariableWithDefault("WCSIM_BUILD_DIR", "./");
 	std::string wcsim_mac_tuning_filename =
 	    Ghost::Utils::GetConfigFilename(m_variables,
-	                                        "wcsim_mac_tuning_filename",
-	                                        (wcsim_dir + "/macros/tuning_parameters.mac").c_str());
+	                                    "wcsim_mac_tuning_filename",
+	                                    (wcsim_dir + "/macros/tuning_parameters.mac").c_str());
 	m_wcsim_mac_filename = Ghost::Utils::GetConfigFilename(m_variables,
-	                                                           "wcsim_mac_filename",
-	                                                           (wcsim_dir + "/WCSim.mac").c_str());
+	                                                       "wcsim_mac_filename",
+	                                                       (wcsim_dir + "/WCSim.mac").c_str());
 
 	// get the number of events
 	if(!m_variables.Get("number_of_events", m_number_of_events)) {
@@ -67,11 +67,12 @@ bool Ghost::G4::WCSim_exe::Initialise(std::string configfile, DataModel& data) {
 
 	m_data->m_p_run_manager->SetUserInitialization(WCSimdetector);
 
-	*m_log << ML(0) << "TODO: Add tuningpars->SaveOptionsToOutput(myRunAction->GetRootOptions());" << std::endl;
+	*m_log << ML(0) << "TODO: Add tuningpars->SaveOptionsToOutput(myRunAction->GetRootOptions());"
+	       << std::endl;
 
 	// save all the options from WCSimTuningParameters
 	//(set in tuning_parameters.mac)
-	//tuningpars->SaveOptionsToOutput(myRunAction->GetRootOptions());
+	// tuningpars->SaveOptionsToOutput(myRunAction->GetRootOptions());
 
 	m_initialised = false;
 
@@ -88,10 +89,12 @@ bool Ghost::G4::WCSim_exe::Execute() {
 
 		m_initialised = true;
 
-		*m_log << ML(1) << std::endl << std::endl
-					 << "******************************" << std::endl
-					 << "Have initalised the Geant run manager" << std::endl
-					 << "******************************" << std::endl << std::endl;
+		*m_log << ML(1) << std::endl
+		       << std::endl
+		       << "******************************" << std::endl
+		       << "Have initalised the Geant run manager" << std::endl
+		       << "******************************" << std::endl
+		       << std::endl;
 	}
 
 	if(m_current_event < m_number_of_events) {
@@ -100,7 +103,7 @@ bool Ghost::G4::WCSim_exe::Execute() {
 	m_current_event++;
 	if(m_current_event >= m_number_of_events)
 		*m_log << ML(1) << "Finished reading events. Stopping loop" << std::endl;
-		m_data->vars.Set("StopLoop", 1);
+	m_data->vars.Set("StopLoop", 1);
 	return true;
 }
 

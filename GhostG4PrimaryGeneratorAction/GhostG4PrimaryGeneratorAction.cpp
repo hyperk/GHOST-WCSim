@@ -19,9 +19,9 @@ bool Ghost::G4::GhostG4PrimaryGeneratorAction::Initialise(std::string configfile
 
 	if(0)
 		m_data->m_p_run_manager->SetUserAction(
-	    new WCSimPrimaryGeneratorAction(static_cast<const WCSimDetectorConstruction*>(
-																																										m_data->m_p_run_manager->GetUserDetectorConstruction())));
-	else {		
+		    new WCSimPrimaryGeneratorAction(static_cast<const WCSimDetectorConstruction*>(
+		        m_data->m_p_run_manager->GetUserDetectorConstruction())));
+	else {
 		m_data->m_p_run_manager->SetUserAction(new Ghost::G4::PGAKinFile());
 	}
 	return true;

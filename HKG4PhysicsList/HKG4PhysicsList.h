@@ -22,23 +22,22 @@ namespace Ghost::G4 {
 
 	class HKG4PhysicsList : public Tool {
 
-	public:
+		public:
 
-		HKG4PhysicsList();  ///< Simple constructor
-		bool Initialise(
-										std::string configfile,
-										DataModel& data);  ///< Initialise Function for setting up Tool resources. @param
-		///< configfile The path and name of the dynamic configuration file
-		///< to read in. @param data A reference to the transient data
-		///< class used to pass information between Tools.
-		bool Execute();   ///< Execute function used to perform Tool purpose.
-		bool Finalise();  ///< Finalise funciton used to clean up resources.
+			HKG4PhysicsList();  ///< Simple constructor
+			bool Initialise(std::string configfile,
+			                DataModel& data);  ///< Initialise Function for setting up Tool resources. @param
+			///< configfile The path and name of the dynamic configuration file
+			///< to read in. @param data A reference to the transient data
+			///< class used to pass information between Tools.
+			bool Execute();   ///< Execute function used to perform Tool purpose.
+			bool Finalise();  ///< Finalise funciton used to clean up resources.
 
-	private:
+		private:
 
-		WCSimPhysicsListFactory* m_p_phys_factory;
-		G4UImanager* m_p_UI;
+			WCSimPhysicsListFactory* m_p_phys_factory;
+			G4UImanager* m_p_UI;
 	};
-} // namespace Ghost::G4
+}  // namespace Ghost::G4
 
 #endif
